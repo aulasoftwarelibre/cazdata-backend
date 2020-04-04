@@ -1,5 +1,7 @@
 security:
     encoders:
+        App\Entity\Hunter:
+            algorithm: auto
         App\Entity\User:
             algorithm: auto
 
@@ -8,12 +10,21 @@ security:
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
             entity:
+                class: App\Entity\Hunter
+                property: uuid
+        admin_user_provider:
+            entity:
                 class: App\Entity\User
                 property: username
+        # used to reload user from session & other features (e.g. switch_user)
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+        admin:
+            pattern: ^/admin
+            anonymous: lazy
+            provider: admin_user_provider
         main:
             anonymous: lazy
             provider: app_user_provider
