@@ -1,113 +1,140 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
+use DateTime;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
-use Symfony\Component\HttpFoundation\File\File;
-use DateTime;
-
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AnimalRepository")
+ *
  * @Vich\Uploadable
  */
 final class Animal
 {
+    public const TYPES = ['minor', 'major'];
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=64)
+     *
      * @Assert\Length(min = 3, max = 64)
      */
-    private $name;
+    private ?string $name;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $isEnabled;
+    /** @ORM\Column(type="boolean") */
+    private bool $isEnabled = true;
 
     /**
      * @ORM\Column(type="string", length=5)
-     * @Assert\Regex("^major$|^minor$")
+     *
+     * @Assert\Choice(choices="Animal::TYPES", message="animal.choose_valid_type")
      */
-    private $type;
+    private string $type;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
      * @Assert\NotBlank
      */
-    private $imageName;
+    private ?string $imageName;
 
-    /**
-     * @Vich\UploadableField(mapping="animal_image", fileNameProperty="imageName")
-     */
-    private $imageFile;
+    /** @Vich\UploadableField(mapping="animal_image", fileNameProperty="imageName") */
+    private ?File $imageFile;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $updatedAt;
+    /** @ORM\Column(type="datetime") */
+    private ?DateTimeInterface $updatedAt;
 
-
-    public function __construct(string $name, bool $isEnabled, string $type, string $imageName, File $imageFile)
-    {
-        $this->name = $name;
-        $this->isEnabled = $isEnabled;
-        $this->type = $type;
-        $this->changeImage($imageName, $imageFile);
-    }
-
-    public function getId(): ?int
+    public function getId() : ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName() : ?string
     {
         return $this->name;
     }
 
-    public function getType(): ?string
+    public function setName(string $name) : self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getIsEnabled() : ?bool
+    {
+        return $this->isEnabled;
+    }
+
+    public function setIsEnabled(bool $isEnabled) : self
+    {
+        $this->isEnabled = $isEnabled;
+
+        return $this;
+    }
+
+    public function getType() : ?string
     {
         return $this->type;
     }
 
-    public function getImageName(): ?string
+    public function setType(string $type) : self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getImageName() : ?string
     {
         return $this->imageName;
     }
 
-    public function getImageFile(): ?File
+    public function setImageName(string $imageName) : self
+    {
+        $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    public function getImageFile() : ?File
     {
         return $this->imageFile;
     }
 
-    public function enable(): void
+    public function setImageFile(?File $imageFile) : Animal
     {
-        if($this->isEnabled === false) {
-            $this->isEnabled = true;
-        }
-    }
-
-    public function disable(): void
-    {
-        if($this->isEnabled === true) {
-            $this->isEnabled = false;
-        }
-    }
-
-    public function changeImage(string $imageName, File $imageFile): void
-    {
-        $this->imageName = $imageName;
         $this->imageFile = $imageFile;
-        $this->updatedAt = new DateTime('now');
+
+        if ($imageFile) {
+            $this->updatedAt = new DateTime();
+        }
+
+        return $this;
     }
 
+    public function getUpdatedAt() : ?DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(DateTimeInterface $updatedAt) : self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
 }

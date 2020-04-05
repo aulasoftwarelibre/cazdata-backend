@@ -1,14 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use function array_unique;
 
 /**
- * @ApiResource()
  * @ORM\Entity(repositoryClass="App\Repository\HunterRepository")
+ *
+ * @ApiResource()
  */
 class Hunter implements UserInterface
 {
@@ -17,49 +21,41 @@ class Hunter implements UserInterface
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
-    /**
-     * @ORM\Column(type="string", length=180, unique=true)
-     */
-    private $uuid;
+    /** @ORM\Column(type="string", length=180, unique=true) */
+    private ?string $uuid;
 
     /**
      * @ORM\Column(type="json")
+     *
+     * @var array<string>
      */
-    private $roles = [];
+    private array $roles = [];
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $email;
+    /** @ORM\Column(type="string", length=255) */
+    private ?string $email;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $displayName;
+    /** @ORM\Column(type="string", length=255) */
+    private ?string $displayName;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $photoUrl;
+    /** @ORM\Column(type="string", length=255, nullable=true) */
+    private ?string $photoUrl;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $isEmailVerified = false;
+    /** @ORM\Column(type="boolean") */
+    private bool $isEmailVerified = false;
 
-    public function getId(): ?int
+    public function getId() : ?int
     {
         return $this->id;
     }
 
-    public function getUuid(): ?string
+    public function getUuid() : ?string
     {
         return $this->uuid;
     }
 
-    public function setUuid(string $uuid): self
+    public function setUuid(string $uuid) : self
     {
         $this->uuid = $uuid;
 
@@ -71,15 +67,17 @@ class Hunter implements UserInterface
      *
      * @see UserInterface
      */
-    public function getUsername(): string
+    public function getUsername() : string
     {
         return (string) $this->uuid;
     }
 
     /**
      * @see UserInterface
+     *
+     * @return array<string>
      */
-    public function getRoles(): array
+    public function getRoles() : array
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
@@ -88,7 +86,10 @@ class Hunter implements UserInterface
         return array_unique($roles);
     }
 
-    public function setRoles(array $roles): self
+    /**
+     * @param array<string> $roles
+     */
+    public function setRoles(array $roles) : self
     {
         $this->roles = $roles;
 
@@ -98,70 +99,70 @@ class Hunter implements UserInterface
     /**
      * @see UserInterface
      */
-    public function getPassword()
+    public function getPassword() : ?string
     {
-        // not needed for apps that do not check user passwords
+        return null;
     }
 
     /**
      * @see UserInterface
      */
-    public function getSalt()
+    public function getSalt() : ?string
     {
-        // not needed for apps that do not check user passwords
+        return null;
     }
 
     /**
      * @see UserInterface
      */
-    public function eraseCredentials()
+    public function eraseCredentials() : void
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
 
-    public function getEmail(): ?string
+    public function getEmail() : ?string
     {
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail(string $email) : self
     {
         $this->email = $email;
 
         return $this;
     }
 
-    public function getDisplayName(): ?string
+    public function getDisplayName() : ?string
     {
         return $this->displayName;
     }
 
-    public function setDisplayName(string $displayName): self
+    public function setDisplayName(string $displayName) : self
     {
         $this->displayName = $displayName;
 
         return $this;
     }
 
-    public function getPhotoUrl(): ?string
+    public function getPhotoUrl() : ?string
     {
         return $this->photoUrl;
     }
 
-    public function setPhotoUrl(?string $photoUrl): self
+    public function setPhotoUrl(?string $photoUrl) : self
     {
         $this->photoUrl = $photoUrl;
 
         return $this;
     }
 
-    public function getIsEmailVerified(): ?bool
+    public function getIsEmailVerified() : ?bool
     {
         return $this->isEmailVerified;
     }
 
-    public function setIsEmailVerified(bool $isEmailVerified): self
+    public function setIsEmailVerified(bool $isEmailVerified) : self
     {
         $this->isEmailVerified = $isEmailVerified;
 
