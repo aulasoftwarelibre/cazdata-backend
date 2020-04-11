@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use ApiPlatform\Core\Action\NotFoundAction;
+use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use DateTime;
 use DateTimeInterface;
@@ -80,6 +81,10 @@ final class Animal
      * @Assert\DateTime()
      */
     private ?DateTimeInterface $updatedAt = null;
+
+
+    /** @ApiProperty(iri="http://schema.org/contentUrl") */
+    public ?string $contentUrl = null;
 
     public function __toString() : string
     {
