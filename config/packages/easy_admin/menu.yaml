@@ -1,0 +1,7 @@
+easy_admin:
+    design:
+        menu:
+            - label: 'menu.inventory'
+              icon: 'database'
+              children:
+                  - { entity: 'Animal', icon: 'paw', label: 'menu.animal' }
