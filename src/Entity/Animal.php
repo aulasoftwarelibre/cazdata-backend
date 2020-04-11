@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Action\NotFoundAction;
+use ApiPlatform\Core\Annotation\ApiResource;
 use DateTime;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
@@ -15,6 +17,16 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Entity(repositoryClass="App\Repository\AnimalRepository")
  *
  * @Vich\Uploadable
+ * @ApiResource(
+ *     collectionOperations={"get"},
+ *     itemOperations={
+ *         "get"={
+ *             "controller"=NotFoundAction::class,
+ *             "read"=false,
+ *             "output"=false,
+ *         },
+ *     },
+ * )
  */
 final class Animal
 {
