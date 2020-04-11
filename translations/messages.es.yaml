@@ -1,0 +1,16 @@
+# menu
+menu.animal: Animales
+menu.inventory: Inventario
+
+# entity names, labels and titles
+Animal: Animal
+Animals: Animales
+
+# entity properties
+Image file: Fichero de imagen
+Image: Imagen
+Is enabled: Activo
+Name: Nombre
+Type: Tipo
+major: mayor
+minor: menor
