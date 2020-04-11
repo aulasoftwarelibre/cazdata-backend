@@ -5,4 +5,4 @@ vich_uploader:
         animal_images:
             uri_prefix: '%app.path.animal_images%'
             upload_destination: '%kernel.project_dir%/public%app.path.animal_images%'
-            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
