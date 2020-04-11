@@ -25,14 +25,14 @@ final class Animal
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private ?int $id;
+    private ?int $id = null;
 
     /**
      * @ORM\Column(type="string", length=64)
      *
      * @Assert\Length(min = 3, max = 64)
      */
-    private ?string $name;
+    private ?string $name = null;
 
     /** @ORM\Column(type="boolean") */
     private bool $isEnabled = true;
@@ -40,22 +40,18 @@ final class Animal
     /**
      * @ORM\Column(type="string", length=5)
      *
-     * @Assert\Choice(choices="Animal::TYPES", message="animal.choose_valid_type")
+     * @Assert\Choice(callback="getTypes", choices="Animal::TYPES", message="animal.choose_valid_type")
      */
-    private string $type;
+    private ?string $type = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     *
-     * @Assert\NotBlank
-     */
-    private ?string $imageName;
+    /** @ORM\Column(type="string", length=255) */
+    private ?string $imageName = null;
 
-    /** @Vich\UploadableField(mapping="animal_image", fileNameProperty="imageName") */
-    private ?File $imageFile;
+    /** @Vich\UploadableField(mapping="animal_images", fileNameProperty="imageName") */
+    private ?File $imageFile = null;
 
     /** @ORM\Column(type="datetime") */
-    private ?DateTimeInterface $updatedAt;
+    private ?DateTimeInterface $updatedAt = null;
 
     public function getId() : ?int
     {
@@ -136,5 +132,13 @@ final class Animal
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+    /**
+     * @return array<string>
+     */
+    public static function getTypes() : array
+    {
+        return ['minor','major'];
     }
 }
