@@ -16,3 +16,6 @@ easy_admin:
                     - { property: 'isEnabled'}
                     - { property: 'type', type: 'choice', type_options: { multiple: false, choices: { 'minor': 'minor', 'major': 'major' } } }
                     - { property: 'imageFile', type: 'vich_image'}
+                form_options: { validation_groups: ['Default', 'Animal'] }
+            new:
+                form_options: { validation_groups: ['Default', 'Animal', 'new'] }
