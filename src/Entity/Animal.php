@@ -34,24 +34,45 @@ final class Animal
      */
     private ?string $name = null;
 
-    /** @ORM\Column(type="boolean") */
+    /**
+     * @ORM\Column(type="boolean")
+     *
+     * @Assert\Type("boolean")
+     */
     private bool $isEnabled = true;
 
     /**
      * @ORM\Column(type="string", length=5)
      *
      * @Assert\Choice(callback="getTypes", choices="Animal::TYPES", message="animal.choose_valid_type")
+     * @Assert\NotBlank()
      */
     private ?string $type = null;
 
     /** @ORM\Column(type="string", length=255) */
     private ?string $imageName = null;
 
-    /** @Vich\UploadableField(mapping="animal_images", fileNameProperty="imageName") */
+    /**
+     * @Vich\UploadableField(mapping="animal_images", fileNameProperty="imageName")
+     * @Assert\NotBlank(groups={"new"})
+     * @Assert\Image(
+     *     allowLandscape=false,
+     *     allowPortrait=false
+     * )
+     */
     private ?File $imageFile = null;
 
-    /** @ORM\Column(type="datetime") */
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @Assert\DateTime()
+     */
     private ?DateTimeInterface $updatedAt = null;
+
+    public function __toString() : string
+    {
+        return (string) $this->getName();
+    }
 
     public function getId() : ?int
     {
@@ -99,7 +120,7 @@ final class Animal
         return $this->imageName;
     }
 
-    public function setImageName(string $imageName) : self
+    public function setImageName(?string $imageName) : self
     {
         $this->imageName = $imageName;
 
