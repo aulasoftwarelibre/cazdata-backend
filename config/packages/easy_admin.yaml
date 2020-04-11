@@ -1,17 +1,2 @@
-easy_admin:
-    entities:
-      Animal:
-        class: App\Entity\Animal
-        form:
-          fields:
-            - { property: 'name'}
-            - { property: 'isEnabled'}
-            - { property: 'type', type: 'choice', type_options: { multiple: false, choices: { 'minor': 'minor', 'major': 'major' } } }
-            - { property: 'imageFile', type: 'vich_image'}
-        list:
-          fields:
-            - { property: 'name' }
-            - { property: 'isEnabled' }
-            - { property: 'type' }
-            - { property: 'image', template: 'vich_uploader_image.html.twig' }
-            - { property: 'updatedAt' }
+imports:
+    - { resource: easy_admin/ }
