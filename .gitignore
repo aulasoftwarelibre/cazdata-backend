@@ -18,3 +18,7 @@
 /.phpcs-cache
 /phpcs.xml
 ###< squizlabs/php_codesniffer ###
+
+###> vich/uploader-bundle ###
+/public/uploads
+###< vich/uploader-bundle ###
