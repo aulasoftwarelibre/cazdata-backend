@@ -1,0 +1,6 @@
+kreait_firebase:
+    projects:
+        cazdata:
+            credentials: '%env(resolve:FIREBASE_CREDENTIALS)%'
+            default: true
+            public: false
