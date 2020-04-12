@@ -22,3 +22,11 @@
 ###> vich/uploader-bundle ###
 /public/uploads
 ###< vich/uploader-bundle ###
+
+###> kreait/firebase-bundle ###
+/config/firebase/*.json
+###< kreait/firebase-bundle ###
+
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###
