@@ -10,6 +10,7 @@
         "doctrine/doctrine-migrations-bundle": "*",
         "doctrine/orm": "^2.4.5",
         "easycorp/easyadmin-bundle": "^2.3",
+        "kreait/firebase-bundle": "^2.0",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/asset": "4.4.*",
         "symfony/console": "4.4.*",

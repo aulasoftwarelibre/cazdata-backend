@@ -22,3 +22,7 @@
 ###> vich/uploader-bundle ###
 /public/uploads
 ###< vich/uploader-bundle ###
+
+###> kreait/firebase-bundle ###
+/config/firebase/*.json
+###< kreait/firebase-bundle ###
