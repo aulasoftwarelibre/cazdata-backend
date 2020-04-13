@@ -12,7 +12,11 @@ use function array_unique;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\HunterRepository")
  *
- * @ApiResource()
+ * @ApiResource(
+ *     attributes={"security"="is_granted('ROLE_USER') and object == user"},
+ *     collectionOperations={},
+ *     itemOperations={"get"}
+ * )
  */
 class Hunter implements UserInterface
 {
