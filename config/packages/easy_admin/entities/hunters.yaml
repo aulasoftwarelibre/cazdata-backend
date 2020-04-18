@@ -1,0 +1,18 @@
+easy_admin:
+    entities:
+        Hunter:
+            class: App\Entity\Hunter
+            label: 'Hunters'
+            disabled_actions: ['new', 'delete']
+            list:
+                title: 'Hunters'
+                fields:
+                    - { property: 'displayName' }
+                    - { property: 'email' }
+                    - { property: 'photoUrl', type: 'image' }
+                    - { property: 'isEnabled'}
+                actions: ['-edit']
+            form:
+                fields:
+                    - { property: 'isEnabled'}
+
