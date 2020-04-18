@@ -12,6 +12,7 @@ use function array_unique;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ *
  * @UniqueEntity(fields={"username"}, groups={"Registration", "Profile"})
  */
 class User implements UserInterface
@@ -25,6 +26,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     *
      * @Assert\NotBlank(groups={"Registration", "Profile"})
      */
     private ?string $username = null;
@@ -36,9 +38,7 @@ class User implements UserInterface
      */
     private array $roles = [];
 
-    /**
-     * @Assert\NotBlank(groups={"Registration"})
-     */
+    /** @Assert\NotBlank(groups={"Registration"}) */
     private ?string $plainPassword = null;
 
     /** @ORM\Column(type="string") */
@@ -46,6 +46,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
+     *
      * @Assert\Email(groups={"Registration", "Profile"})
      * @Assert\NotBlank(groups={"Registration", "Profile"})
      */
@@ -53,6 +54,11 @@ class User implements UserInterface
 
     /** @ORM\Column(type="boolean") */
     private bool $isEnabled = true;
+
+    public function __toString() : string
+    {
+        return (string) $this->getUsername();
+    }
 
     public function getId() : ?int
     {
