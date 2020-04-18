@@ -49,6 +49,9 @@ class Hunter implements UserInterface
     /** @ORM\Column(type="boolean") */
     private bool $isEmailVerified = false;
 
+    /** @ORM\Column(type="boolean") */
+    private bool $isEnabled = true;
+
     public function getId() : ?int
     {
         return $this->id;
@@ -169,6 +172,18 @@ class Hunter implements UserInterface
     public function setIsEmailVerified(bool $isEmailVerified) : self
     {
         $this->isEmailVerified = $isEmailVerified;
+
+        return $this;
+    }
+
+    public function getIsEnabled() : ?bool
+    {
+        return $this->isEnabled;
+    }
+
+    public function setIsEnabled(bool $isEnabled) : self
+    {
+        $this->isEnabled = $isEnabled;
 
         return $this;
     }

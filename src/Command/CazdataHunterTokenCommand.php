@@ -17,12 +17,16 @@ use function is_string;
 
 class CazdataHunterTokenCommand extends Command
 {
+    /**
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingNativeTypeHint
+     * @var string
+     */
     protected static $defaultName = 'cazdata:hunter:token';
     private Auth $auth;
 
-    public function __construct(Auth $auth, ?string $name = null)
+    public function __construct(Auth $auth)
     {
-        parent::__construct($name);
+        parent::__construct();
 
         $this->auth = $auth;
     }

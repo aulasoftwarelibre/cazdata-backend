@@ -5,3 +5,7 @@ easy_admin:
               icon: 'database'
               children:
                   - { entity: 'Animal', icon: 'paw', label: 'menu.animal' }
+            - label: 'menu.users'
+              icon: 'users'
+              children:
+                  - { entity: 'Hunter', icon: 'walking', label: 'menu.hunter' }
