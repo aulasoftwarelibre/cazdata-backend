@@ -31,6 +31,7 @@ security:
             logout: ~
             provider: app_user_provider
             stateless: true
+            user_checker: App\Securiy\Core\User\HunterChecker
 
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }

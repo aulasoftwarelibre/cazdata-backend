@@ -1,16 +1,25 @@
 # menu
 menu.animal: Animales
+menu.hunter: Cazadores
 menu.inventory: Inventario
+menu.user: Usuarios
+menu.users: Usuarios
 
 # entity names, labels and titles
 Animal: Animal
 Animals: Animales
+Hunter: Cazador
+Hunters: Cazadores
+
 
 # entity properties
+Display name: Nombre
+Email: Correo-e
 Image file: Fichero de imagen
 Image: Imagen
 Is enabled: Activo
 Name: Nombre
+Photo url: Imagen
 Type: Tipo
 major: mayor
 minor: menor
