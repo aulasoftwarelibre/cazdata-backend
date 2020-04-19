@@ -4,9 +4,9 @@
 
 {% block body %}
     <div class="container mx-auto h-full flex h-screen justify-center items-center">
-        <div class="w-full max-w-sm">
+        <div class="w-full max-w-md">
+            <img class="object-none object-center m-auto" src="{{ asset('assets/images/logo.svg') }}" alt="CazData Logo">
             <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="post">
-                <img class="object-none object-center" src="{{ asset('assets/images/logo.svg') }}" alt="CazData Logo">
                 {% if error %}
                     <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-5 rounded relative" role="alert">
                         <span class="block sm:inline">{{ error.messageKey|trans(error.messageData, 'security') }}</span>
@@ -29,7 +29,7 @@
                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                         Comprobar
                     </button>
-                    <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+                    <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="{{ path('app_forgot_password_request') }}">
                         ¿Contraseña olvidada?
                     </a>
                 </div>
