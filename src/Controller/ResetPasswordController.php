@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Entity\User;
@@ -17,6 +19,8 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use SymfonyCasts\Bundle\ResetPassword\Controller\ResetPasswordControllerTrait;
 use SymfonyCasts\Bundle\ResetPassword\Exception\ResetPasswordExceptionInterface;
 use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
+use function assert;
+use function sprintf;
 
 /**
  * @Route("/reset-password")
@@ -25,7 +29,7 @@ class ResetPasswordController extends AbstractController
 {
     use ResetPasswordControllerTrait;
 
-    private $resetPasswordHelper;
+    private ResetPasswordHelperInterface $resetPasswordHelper;
 
     public function __construct(ResetPasswordHelperInterface $resetPasswordHelper)
     {
@@ -37,7 +41,7 @@ class ResetPasswordController extends AbstractController
      *
      * @Route("", name="app_forgot_password_request")
      */
-    public function request(Request $request, MailerInterface $mailer): Response
+    public function request(Request $request, MailerInterface $mailer) : Response
     {
         $form = $this->createForm(ResetPasswordRequestFormType::class);
         $form->handleRequest($request);
@@ -59,10 +63,10 @@ class ResetPasswordController extends AbstractController
      *
      * @Route("/check-email", name="app_check_email")
      */
-    public function checkEmail(): Response
+    public function checkEmail() : Response
     {
         // We prevent users from directly accessing this page
-        if (!$this->canCheckEmail()) {
+        if (! $this->canCheckEmail()) {
             return $this->redirectToRoute('app_forgot_password_request');
         }
 
@@ -76,7 +80,7 @@ class ResetPasswordController extends AbstractController
      *
      * @Route("/reset/{token}", name="app_reset_password")
      */
-    public function reset(Request $request, UserPasswordEncoderInterface $passwordEncoder, string $token = null): Response
+    public function reset(Request $request, UserPasswordEncoderInterface $passwordEncoder, ?string $token = null) : Response
     {
         if ($token) {
             // We store the token in session and remove it from the URL, to avoid the URL being
@@ -87,12 +91,13 @@ class ResetPasswordController extends AbstractController
         }
 
         $token = $this->getTokenFromSession();
-        if (null === $token) {
+        if ($token === null) {
             throw $this->createNotFoundException('No se encontró token de restablecimiento de contraseña en la URL o en la sesión.');
         }
 
         try {
             $user = $this->resetPasswordHelper->validateTokenAndFetchUser($token);
+            assert($user instanceof User);
         } catch (ResetPasswordExceptionInterface $e) {
             $this->addFlash('reset_password_error', sprintf(
                 'Hubo un problema al validar su solicitud de reinicio - %s',
@@ -130,17 +135,15 @@ class ResetPasswordController extends AbstractController
         ]);
     }
 
-    private function processSendingPasswordResetEmail(string $emailFormData, MailerInterface $mailer): RedirectResponse
+    private function processSendingPasswordResetEmail(string $emailFormData, MailerInterface $mailer) : RedirectResponse
     {
-        $user = $this->getDoctrine()->getRepository(User::class)->findOneBy([
-            'email' => $emailFormData,
-        ]);
+        $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['email' => $emailFormData]);
 
         // Marks that you are allowed to see the app_check_email page.
         $this->setCanCheckEmailInSession();
 
         // Do not reveal whether a user account was found or not.
-        if (!$user) {
+        if (! $user instanceof User) {
             return $this->redirectToRoute('app_check_email');
         }
 
@@ -163,8 +166,7 @@ class ResetPasswordController extends AbstractController
             ->context([
                 'resetToken' => $resetToken,
                 'tokenLifetime' => $this->resetPasswordHelper->getTokenLifetime(),
-            ])
-        ;
+            ]);
 
         $mailer->send($email);
 
