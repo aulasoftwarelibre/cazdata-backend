@@ -23,16 +23,28 @@ security:
             pattern: ^/admin
             anonymous: lazy
             provider: admin_user_provider
+            user_checker: App\Security\Core\User\UserChecker
+            guard:
+                authenticators:
+                    - App\Security\Guard\AdminAuthenticator
+            logout:
+                path: app_logout
+                target: homepage
+            remember_me:
+                secret:   '%kernel.secret%'
+                lifetime: 604800 # 1 week in seconds
+                path:     /admin
         main:
             anonymous: lazy
             guard:
                 authenticators:
-                    - App\Securiy\Guard\FirebaseGuardAuthenticator
+                    - App\Security\Guard\FirebaseGuardAuthenticator
             logout: ~
             provider: app_user_provider
             stateless: true
-            user_checker: App\Securiy\Core\User\HunterChecker
+            user_checker: App\Security\Core\User\HunterChecker
 
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/admin/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }

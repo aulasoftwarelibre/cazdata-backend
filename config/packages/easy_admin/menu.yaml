@@ -8,4 +8,5 @@ easy_admin:
             - label: 'menu.users'
               icon: 'users'
               children:
+                  - { entity: 'User', icon: 'user', label: 'menu.user' }
                   - { entity: 'Hunter', icon: 'walking', label: 'menu.hunter' }

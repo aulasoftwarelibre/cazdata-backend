@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reset your password{% endblock %}
+
+{% block body %}
+    <div class="container mx-auto h-full flex h-screen justify-center items-center">
+        <div class="w-full max-w-md">
+            <img class="object-none object-center m-auto" src="{{ asset('assets/images/logo.svg') }}" alt="CazData Logo">
+            <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="post">
+                <div class="font-bold text-xl mb-2">Restaurar contraseña</div>
+                {% for flashError in app.flashes('reset_password_error') %}
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-5 rounded relative" role="alert">
+                        <span class="block sm:inline">{{ flashError }}</span>
+                    </div>
+                {% endfor %}
+                <div class="py-4">
+                    {{ form_row(requestForm.email) }}
+                    {{ form_rest(requestForm) }}
+                    <p class="text-gray-700 text-base">
+                        Ingrese su dirección de correo electrónico y le enviaremos un
+                        enlace para restablecer su contraseña
+                    </p>
+                </div>
+                <div class="py-4">
+                    <div class="flex items-center justify-between">
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                            Enviar contraseña
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

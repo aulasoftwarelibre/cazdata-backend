@@ -10,7 +10,8 @@ Animal: Animal
 Animals: Animales
 Hunter: Cazador
 Hunters: Cazadores
-
+User: Usuario
+Users: Usuarios
 
 # entity properties
 Display name: Nombre
@@ -19,7 +20,14 @@ Image file: Fichero de imagen
 Image: Imagen
 Is enabled: Activo
 Name: Nombre
+New password: Nueva contraseña
 Photo url: Imagen
+Plain password: Contraseña
+ROLE_ADMIN: ADMINISTRADOR
+ROLE_USER: USUARIO
+Repeat Password: Repita la contraseña
+Roles: Roles
 Type: Tipo
+Username: Nombre de usuario
 major: mayor
 minor: menor

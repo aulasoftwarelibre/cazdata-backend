@@ -5,11 +5,15 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 use function array_unique;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ *
+ * @UniqueEntity(fields={"username"}, groups={"Registration", "Profile"})
  */
 class User implements UserInterface
 {
@@ -18,10 +22,14 @@ class User implements UserInterface
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private ?int $id;
+    private ?int $id = null;
 
-    /** @ORM\Column(type="string", length=180, unique=true) */
-    private ?string $username;
+    /**
+     * @ORM\Column(type="string", length=180, unique=true)
+     *
+     * @Assert\NotBlank(groups={"Registration", "Profile"})
+     */
+    private ?string $username = null;
 
     /**
      * @ORM\Column(type="json")
@@ -30,12 +38,27 @@ class User implements UserInterface
      */
     private array $roles = [];
 
+    /** @Assert\NotBlank(groups={"Registration"}) */
+    private ?string $plainPassword = null;
+
+    /** @ORM\Column(type="string") */
+    private ?string $password = null;
+
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=255, unique=true)
      *
-     * @var string The hashed password
+     * @Assert\Email(groups={"Registration", "Profile"})
+     * @Assert\NotBlank(groups={"Registration", "Profile"})
      */
-    private string $password;
+    private ?string $email = null;
+
+    /** @ORM\Column(type="boolean") */
+    private bool $isEnabled = true;
+
+    public function __toString() : string
+    {
+        return (string) $this->getUsername();
+    }
 
     public function getId() : ?int
     {
@@ -83,6 +106,18 @@ class User implements UserInterface
         return $this;
     }
 
+    public function getPlainPassword() : ?string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(?string $plainPassword) : User
+    {
+        $this->plainPassword = $plainPassword;
+
+        return $this;
+    }
+
     /**
      * @see UserInterface
      */
@@ -111,7 +146,30 @@ class User implements UserInterface
      */
     public function eraseCredentials() : void
     {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+        $this->plainPassword = null;
+    }
+
+    public function getEmail() : ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email) : self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getIsEnabled() : ?bool
+    {
+        return $this->isEnabled;
+    }
+
+    public function setIsEnabled(bool $isEnabled) : self
+    {
+        $this->isEnabled = $isEnabled;
+
+        return $this;
     }
 }

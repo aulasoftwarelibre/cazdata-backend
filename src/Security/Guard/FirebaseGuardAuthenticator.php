@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Securiy\Guard;
+namespace App\Security\Guard;
 
 use App\Message\RegisterHunterFromCredentialsMessage;
 use Firebase\Auth\Token\Exception\InvalidToken;
