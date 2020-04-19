@@ -1,0 +1,11 @@
+<h1>¡Hola!</h1>
+
+<p>
+    Para restablecer su contraseña, visite
+    <a href="{{ url('app_reset_password', {token: resetToken.token}) }}">esta página</a>
+    Este enlace caducará en {{ tokenLifetime|date('g') }} hora(s).
+</p>
+
+<p>
+    Aula de Software Libre
+</p>

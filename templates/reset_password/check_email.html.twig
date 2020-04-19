@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Password Reset Email Sent{% endblock %}
+
+{% block body %}
+    <div class="container mx-auto h-full flex h-screen justify-center items-center">
+        <div class="w-full max-w-md">
+            <img class="object-none object-center m-auto" src="{{ asset('assets/images/logo.svg') }}" alt="CazData Logo">
+            <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <div class="py-4">
+                    <p class="text-gray-700 text-base">
+                        Se ha enviado un correo electrónico que contiene un enlace en el que puede hacer clic para
+                        restablecer su contraseña. Este enlace caducará en {{ tokenLifetime|date('g') }} hora(s).</p>
+                    </p>
+                </div>
+                <div class="py-4">
+                    <p class="text-gray-700 text-base">
+                        Si no recibe un correo electrónico, revise su carpeta de correo no deseado o
+                        <a href="{{ path('app_forgot_password_request') }}">inténtelo de nuevo</a>.
+                    </p>
+                </div>
+                <div class="py-4">
+                    <div class="flex items-center justify-between">
+                        <a href="{{ path('app_login') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" >
+                            Volver
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
