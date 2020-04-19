@@ -1,0 +1,28 @@
+easy_admin:
+    entities:
+        User:
+            class: App\Entity\User
+            controller: App\Controller\Backoffice\UserController
+            label: 'Users'
+            list:
+                title: 'Users'
+                fields:
+                    - { property: 'username' }
+                    - { property: 'email' }
+                    - { property: 'isEnabled'}
+            new:
+                fields:
+                    - { property: 'username' }
+                    - { property: 'email' }
+                    - { property: 'plainPassword', type: 'text', type_options: { required: true } }
+                    - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }
+                    - { property: 'isEnabled' }
+                form_options: { validation_groups: ['Registration'] }
+            edit:
+                fields:
+                    - { property: 'username' }
+                    - { property: 'email' }
+                    - { property: 'plainPassword', type: 'text', type_options: { required: false } }
+                    - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }
+                    - { property: 'isEnabled' }
+                form_options: { validation_groups: ['Profile'] }
