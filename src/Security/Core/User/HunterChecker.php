@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Securiy\Core\User;
+namespace App\Security\Core\User;
 
 use App\Entity\Hunter;
 use Symfony\Component\Security\Core\Exception\DisabledException;
