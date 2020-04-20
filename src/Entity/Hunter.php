@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use function array_unique;
@@ -51,6 +54,17 @@ class Hunter implements UserInterface
 
     /** @ORM\Column(type="boolean") */
     private bool $isEnabled = true;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Journey", mappedBy="hunter", orphanRemoval=true)
+     * @ApiSubresource()
+     */
+    private ArrayCollection $journeys;
+
+    public function __construct()
+    {
+        $this->journeys = new ArrayCollection();
+    }
 
     public function getId() : ?int
     {
@@ -184,6 +198,37 @@ class Hunter implements UserInterface
     public function setIsEnabled(bool $isEnabled) : self
     {
         $this->isEnabled = $isEnabled;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Journey[]
+     */
+    public function getJourneys(): Collection
+    {
+        return $this->journeys;
+    }
+
+    public function addJourney(Journey $journey): self
+    {
+        if (!$this->journeys->contains($journey)) {
+            $this->journeys[] = $journey;
+            $journey->setHunter($this);
+        }
+
+        return $this;
+    }
+
+    public function removeJourney(Journey $journey): self
+    {
+        if ($this->journeys->contains($journey)) {
+            $this->journeys->removeElement($journey);
+            // set the owning side to null (unless already changed)
+            if ($journey->getHunter() === $this) {
+                $journey->setHunter(null);
+            }
+        }
 
         return $this;
     }

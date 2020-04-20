@@ -1,0 +1,149 @@
+<?php
+
+namespace App\Entity;
+
+use ApiPlatform\Core\Annotation\ApiResource;
+use DateTimeInterface;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ApiResource(
+ *     itemOperations={"get", "delete"},
+ *     collectionOperations={"post"},
+ * )
+ * @ORM\Entity(repositoryClass="App\Repository\JourneyRepository")
+ */
+final class Journey
+{
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private ?int $id = null;
+
+    /**
+     * @ORM\Column(type="string", length=180, unique=true)
+     */
+    private ?string $uuid;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private ?string $title;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private ?int $distance;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private ?DateTimeInterface $startsAt;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private ?DateTimeInterface $endsAt;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private ?int $calories;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Hunter", inversedBy="journeys")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private ?Hunter $hunter;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getUuid(): ?string
+    {
+        return $this->uuid;
+    }
+
+    public function setUuid(string $uuid): self
+    {
+        $this->uuid = $uuid;
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    public function getDistance(): ?int
+    {
+        return $this->distance;
+    }
+
+    public function setDistance(int $distance): self
+    {
+        $this->distance = $distance;
+
+        return $this;
+    }
+
+    public function getStartsAt(): ?DateTimeInterface
+    {
+        return $this->startsAt;
+    }
+
+    public function setStartsAt(DateTimeInterface $startsAt): self
+    {
+        $this->startsAt = $startsAt;
+
+        return $this;
+    }
+
+    public function getEndsAt(): ?DateTimeInterface
+    {
+        return $this->endsAt;
+    }
+
+    public function setEndsAt(DateTimeInterface $endsAt): self
+    {
+        $this->endsAt = $endsAt;
+
+        return $this;
+    }
+
+    public function getCalories(): ?int
+    {
+        return $this->calories;
+    }
+
+    public function setCalories(int $calories): self
+    {
+        $this->calories = $calories;
+
+        return $this;
+    }
+
+    public function getHunter(): ?Hunter
+    {
+        return $this->hunter;
+    }
+
+    public function setHunter(?Hunter $hunter): self
+    {
+        $this->hunter = $hunter;
+
+        return $this;
+    }
+}
