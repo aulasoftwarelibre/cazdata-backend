@@ -18,12 +18,7 @@ final class Journey
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private ?int $id = null;
-
-    /**
-     * @ORM\Column(type="string", length=180, unique=true)
+     * @ORM\Column(type="uuid", unique=true)
      */
     private ?string $uuid;
 
@@ -58,12 +53,7 @@ final class Journey
      */
     private ?Hunter $hunter;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    public function getUuid(): ?string
+     public function getUuid(): ?string
     {
         return $this->uuid;
     }
