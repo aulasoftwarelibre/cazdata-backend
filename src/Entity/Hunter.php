@@ -23,11 +23,8 @@ class Hunter implements UserInterface
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=180, unique=true)
      */
-    private ?int $id;
-
-    /** @ORM\Column(type="string", length=180, unique=true) */
     private ?string $uuid;
 
     /**
@@ -51,11 +48,6 @@ class Hunter implements UserInterface
 
     /** @ORM\Column(type="boolean") */
     private bool $isEnabled = true;
-
-    public function getId() : ?int
-    {
-        return $this->id;
-    }
 
     public function getUuid() : ?string
     {
