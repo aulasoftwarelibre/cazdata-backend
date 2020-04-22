@@ -23,7 +23,7 @@ final class Journey
      * @ORM\GeneratedValue()
      * @ORM\Column(type="uuid", unique=true)
      */
-    private ?string $uuid;
+    private ?string $id;
 
     /** @ORM\Column(type="string", length=255) */
     private ?string $title;
@@ -46,14 +46,14 @@ final class Journey
      */
     private ?Hunter $hunter;
 
-    public function getUuid() : ?string
+    public function getId() : ?string
     {
-        return $this->uuid;
+        return $this->id;
     }
 
-    public function setUuid(string $uuid) : self
+    public function setId(string $id) : self
     {
-        $this->uuid = $uuid;
+        $this->id = $id;
 
         return $this;
     }
