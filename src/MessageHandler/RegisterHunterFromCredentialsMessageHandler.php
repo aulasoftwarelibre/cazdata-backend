@@ -9,7 +9,7 @@ use App\Message\RegisterHunterFromCredentialsMessage;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
-final class RegisterHunterFromCredentialsMessageHundler implements MessageHandlerInterface
+final class RegisterHunterFromCredentialsMessageHandler implements MessageHandlerInterface
 {
     private EntityManagerInterface $manager;
 
