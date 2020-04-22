@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -57,8 +56,10 @@ class Hunter implements UserInterface
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Journey", mappedBy="hunter", orphanRemoval=true)
+     *
+     * @var Collection<null, Journey>
      */
-    private ArrayCollection $journeys;
+    private Collection $journeys;
 
     public function __construct()
     {
@@ -202,16 +203,16 @@ class Hunter implements UserInterface
     }
 
     /**
-     * @return Collection|Journey[]
+     * @return Collection<null,Journey>
      */
-    public function getJourneys(): Collection
+    public function getJourneys() : Collection
     {
         return $this->journeys;
     }
 
-    public function addJourney(Journey $journey): self
+    public function addJourney(Journey $journey) : self
     {
-        if (!$this->journeys->contains($journey)) {
+        if (! $this->journeys->contains($journey)) {
             $this->journeys[] = $journey;
             $journey->setHunter($this);
         }
@@ -219,7 +220,7 @@ class Hunter implements UserInterface
         return $this;
     }
 
-    public function removeJourney(Journey $journey): self
+    public function removeJourney(Journey $journey) : self
     {
         if ($this->journeys->contains($journey)) {
             $this->journeys->removeElement($journey);
