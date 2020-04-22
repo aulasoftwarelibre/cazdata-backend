@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ApiResource(
  *     itemOperations={"get", "delete"},
- *     collectionOperations={"post"},
+ *     collectionOperations={"get", "post"},
  * )
  * @ORM\Entity(repositoryClass="App\Repository\JourneyRepository")
  */

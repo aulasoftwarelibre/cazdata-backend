@@ -57,7 +57,6 @@ class Hunter implements UserInterface
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Journey", mappedBy="hunter", orphanRemoval=true)
-     * @ApiSubresource()
      */
     private ArrayCollection $journeys;
 
