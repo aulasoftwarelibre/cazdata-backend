@@ -16,7 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     collectionOperations={"get", "post"},
  * )
  */
-final class Journey
+class Journey
 {
     /**
      * @ORM\Id()
