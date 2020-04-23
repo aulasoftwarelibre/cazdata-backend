@@ -25,9 +25,9 @@ class Hunter implements UserInterface
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="string", length=180, unique=true)
+     * @ORM\Column(type="uuid", unique=true)
      */
-    private ?string $uuid;
+    private ?string $id;
 
     /**
      * @ORM\Column(type="json")
@@ -50,7 +50,7 @@ class Hunter implements UserInterface
 
     /** @ORM\Column(type="boolean") */
     private bool $isEnabled = true;
-  
+
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Journey", mappedBy="hunter", orphanRemoval=true)
      *
@@ -63,14 +63,14 @@ class Hunter implements UserInterface
         $this->journeys = new ArrayCollection();
     }
 
-    public function getUuid() : ?string
+    public function getId() : ?string
     {
-        return $this->uuid;
+        return $this->id;
     }
 
-    public function setUuid(string $uuid) : self
+    public function setId(string $id) : self
     {
-        $this->uuid = $uuid;
+        $this->id = $id;
 
         return $this;
     }
@@ -82,7 +82,7 @@ class Hunter implements UserInterface
      */
     public function getUsername() : string
     {
-        return (string) $this->uuid;
+        return (string) $this->id;
     }
 
     /**

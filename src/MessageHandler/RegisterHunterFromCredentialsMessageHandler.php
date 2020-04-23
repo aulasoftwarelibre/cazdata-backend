@@ -22,7 +22,7 @@ final class RegisterHunterFromCredentialsMessageHandler implements MessageHandle
     {
         $hunter = new Hunter();
 
-        $hunter->setUuid($message->getUuid());
+        $hunter->setId($message->getUuid());
         $hunter->setEmail($message->getEmail());
         $hunter->setDisplayName($message->getDisplayName());
         $hunter->setPhotoUrl($message->getPhotoUrl());
