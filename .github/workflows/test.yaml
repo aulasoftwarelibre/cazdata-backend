@@ -18,12 +18,8 @@ jobs:
                   restore-keys: |
                       ${{ runner.os }}-composer-
             - name: Init environment
-              run: cd support/docker && ./init-test.sh
+              run: composer install
             - name: Run tests
-              run: ./support/docker/composer.sh check
+              run: composer.sh check
               env:
                   SYMFONY_ENV: test
-            - name: Show log on failure
-              if: failure()
-              run:  |
-                  cd support/docker && docker-compose exec -T php-fpm.readid.stepup.example.com cat var/logs/test/test.log
