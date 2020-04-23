@@ -9,7 +9,7 @@ use App\Message\RegisterHunterFromCredentialsMessage;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
-final class RegisterHunterFromCredentialsMessageHundler implements MessageHandlerInterface
+final class RegisterHunterFromCredentialsMessageHandler implements MessageHandlerInterface
 {
     private EntityManagerInterface $manager;
 
@@ -22,7 +22,7 @@ final class RegisterHunterFromCredentialsMessageHundler implements MessageHandle
     {
         $hunter = new Hunter();
 
-        $hunter->setUuid($message->getUuid());
+        $hunter->setId($message->getUuid());
         $hunter->setEmail($message->getEmail());
         $hunter->setDisplayName($message->getDisplayName());
         $hunter->setPhotoUrl($message->getPhotoUrl());
