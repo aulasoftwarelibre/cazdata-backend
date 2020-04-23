@@ -29,7 +29,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *     },
  * )
  */
-final class Animal
+class Animal
 {
     public const TYPES = ['minor', 'major'];
 
