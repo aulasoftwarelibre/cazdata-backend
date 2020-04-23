@@ -1,5 +1,5 @@
 {
-    "devDependencies": {
+    "dependencies": {
         "@symfony/webpack-encore": "^0.28.2",
         "autoprefixer": "^9.7.6",
         "core-js": "^3.0.0",
