@@ -1,0 +1,13 @@
+imports:
+    - 'tests/Behat/Resources/config/suites.yaml'
+
+default:
+    extensions:
+        FriendsOfBehat\VariadicExtension: ~
+        FriendsOfBehat\SymfonyExtension: ~
+
+    formatters:
+        pretty:
+            verbose: true
+            paths: false
+            snippets: false
