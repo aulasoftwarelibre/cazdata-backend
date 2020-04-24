@@ -7,13 +7,24 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\JourneyRepository")
  *
+ * @UniqueEntity(fields={"id"})
  * @ApiResource(
- *     itemOperations={"get", "delete"},
- *     collectionOperations={"get", "post"},
+ *     attributes={
+ *          "security"="is_granted('ROLE_USER')",
+ *     },
+ *     itemOperations={
+ *          "get"={"security"="is_granted('OWNER', object)"},
+ *          "delete"={"security"="is_granted('OWNER', object)"}
+ *     },
+ *     collectionOperations={
+ *          "get",
+ *          "post"={"security_post_denormalize"="is_granted('OWNER', object)"},
+ *     },
  * )
  */
 class Journey
