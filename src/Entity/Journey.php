@@ -20,7 +20,7 @@ class Journey
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
+     * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\Column(type="uuid", unique=true)
      */
     private ?string $id;
