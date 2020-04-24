@@ -1,8 +1,0 @@
-default:
-    suites:
-        api_user:
-            contexts:
-                - 'tests.behat.context.hook.database_context'
-
-            filters:
-                tags: '@hunter && @api'
