@@ -13,7 +13,7 @@ security:
         app_user_provider:
             entity:
                 class: App\Entity\Hunter
-                property: uuid
+                property: id
 
     firewalls:
         dev:

@@ -24,8 +24,8 @@ class Hunter implements UserInterface
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="uuid", unique=true)
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\Column(type="string", unique=true)
      */
     private ?string $id;
 
