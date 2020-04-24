@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d9801ef8f30907c781c02f47bf4e592",
+    "content-hash": "62ff20431647bf68ff35408b7f182002",
     "packages": [
         {
             "name": "api-platform/api-pack",
@@ -238,6 +238,124 @@
                 "math"
             ],
             "time": "2020-04-15T15:59:35+00:00"
+        },
+        {
+            "name": "coduo/php-matcher",
+            "version": "4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/coduo/php-matcher.git",
+                "reference": "aaa33639fe03d5883e0ccfbeea3d02a65ebc567c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/coduo/php-matcher/zipball/aaa33639fe03d5883e0ccfbeea3d02a65ebc567c",
+                "reference": "aaa33639fe03d5883e0ccfbeea3d02a65ebc567c",
+                "shasum": ""
+            },
+            "require": {
+                "coduo/php-to-string": "^3",
+                "doctrine/lexer": "^1.0",
+                "ext-filter": "*",
+                "ext-json": "*",
+                "openlss/lib-array2xml": "^1.0",
+                "php": ">=7.2",
+                "symfony/expression-language": "^2.3|^3.0|^4.0|^5.0",
+                "symfony/property-access": "^2.3|^3.0|^4.0|^5.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.4",
+                "phpunit/phpunit": "^8.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Coduo\\PHPMatcher\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michał Dąbrowski",
+                    "email": "dabrowski@brillante.pl"
+                },
+                {
+                    "name": "Norbert Orzechowicz",
+                    "email": "norbert@orzechowicz.pl"
+                }
+            ],
+            "description": "PHP Matcher enables you to match values with patterns",
+            "keywords": [
+                "Match",
+                "json",
+                "matcher",
+                "tests"
+            ],
+            "time": "2019-12-22T16:54:01+00:00"
+        },
+        {
+            "name": "coduo/php-to-string",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/coduo/php-to-string.git",
+                "reference": "06afb7365634466287bd6b55a26fa462c28377e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/coduo/php-to-string/zipball/06afb7365634466287bd6b55a26fa462c28377e0",
+                "reference": "06afb7365634466287bd6b55a26fa462c28377e0",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2",
+                "symfony/intl": "^3.4|^4.0|^5.0"
+            },
+            "require-dev": {
+                "coduo/phpspec-data-provider-extension": "^1.0.3",
+                "phpspec/phpspec": "^2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Coduo\\ToString\\": "src/Coduo/ToString"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michał Dąbrowski",
+                    "email": "dabrowski@brillante.pl"
+                },
+                {
+                    "name": "Norbert Orzechowicz",
+                    "email": "norbert@orzechowicz.pl"
+                }
+            ],
+            "description": "Simple library that converts PHP value into strings",
+            "keywords": [
+                "php",
+                "string",
+                "to",
+                "to string"
+            ],
+            "time": "2019-11-23T10:30:04+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -3301,6 +3419,55 @@
                 "service proxies"
             ],
             "time": "2020-02-08T19:22:03+00:00"
+        },
+        {
+            "name": "openlss/lib-array2xml",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nullivex/lib-array2xml.git",
+                "reference": "a91f18a8dfc69ffabe5f9b068bc39bb202c81d90"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nullivex/lib-array2xml/zipball/a91f18a8dfc69ffabe5f9b068bc39bb202c81d90",
+                "reference": "a91f18a8dfc69ffabe5f9b068bc39bb202c81d90",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "LSS": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Bryan Tong",
+                    "email": "bryan@nullivex.com",
+                    "homepage": "https://www.nullivex.com"
+                },
+                {
+                    "name": "Tony Butler",
+                    "email": "spudz76@gmail.com",
+                    "homepage": "https://www.nullivex.com"
+                }
+            ],
+            "description": "Array2XML conversion library credit to lalit.org",
+            "homepage": "https://www.nullivex.com",
+            "keywords": [
+                "array",
+                "array conversion",
+                "xml",
+                "xml conversion"
+            ],
+            "time": "2019-03-29T20:06:56+00:00"
         },
         {
             "name": "pagerfanta/pagerfanta",
@@ -9401,16 +9568,16 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozart/assert.git",
-                "reference": "aed98a490f9a8f78468232db345ab9cf606cf598"
+                "reference": "ab2cb0b3b559010b75981b1bdce728da3ee90ad6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/aed98a490f9a8f78468232db345ab9cf606cf598",
-                "reference": "aed98a490f9a8f78468232db345ab9cf606cf598",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/ab2cb0b3b559010b75981b1bdce728da3ee90ad6",
+                "reference": "ab2cb0b3b559010b75981b1bdce728da3ee90ad6",
                 "shasum": ""
             },
             "require": {
@@ -9418,7 +9585,7 @@
                 "symfony/polyfill-ctype": "^1.8"
             },
             "conflict": {
-                "vimeo/psalm": "<3.6.0"
+                "vimeo/psalm": "<3.9.1"
             },
             "require-dev": {
                 "phpunit/phpunit": "^4.8.36 || ^7.5.13"
@@ -9445,7 +9612,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2020-02-14T12:15:55+00:00"
+            "time": "2020-04-18T12:12:48+00:00"
         },
         {
             "name": "willdurand/negotiation",
@@ -10150,6 +10317,60 @@
             ],
             "description": "Variadic support for behat context arguments",
             "time": "2020-02-13T07:43:11+00:00"
+        },
+        {
+            "name": "jblond/php-diff",
+            "version": "v1.16",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JBlond/php-diff.git",
+                "reference": "c662c0213a41677fca24f90fcc810dc429d74caf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JBlond/php-diff/zipball/c662c0213a41677fca24f90fcc810dc429d74caf",
+                "reference": "c662c0213a41677fca24f90fcc810dc429d74caf",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "phpmd/phpmd": "2.*",
+                "phpunit/phpunit": "8.*",
+                "squizlabs/php_codesniffer": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "jblond\\": "lib/jblond"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Mario",
+                    "email": "leet31337@web.de"
+                },
+                {
+                    "name": "Ferry Cools",
+                    "email": "info@digilive.nl"
+                },
+                {
+                    "name": "Chris Boulton",
+                    "email": "chris.boulton@interspire.com"
+                }
+            ],
+            "description": "A comprehensive library for generating differences between two hashable objects (strings or arrays).",
+            "keywords": [
+                "diff",
+                "php"
+            ],
+            "time": "2020-03-02T08:34:17+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -11624,7 +11845,8 @@
     "platform": {
         "php": "^7.4",
         "ext-ctype": "*",
-        "ext-iconv": "*"
+        "ext-iconv": "*",
+        "ext-json": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"
