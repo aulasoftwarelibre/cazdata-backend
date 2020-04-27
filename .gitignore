@@ -39,5 +39,5 @@ yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
 ###> behat/behat ###
-/behat.yaml.dist
+/behat.yaml
 ###< behat/behat ###
