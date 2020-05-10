@@ -1,0 +1,12 @@
+default:
+    suites:
+        api_animal:
+            contexts:
+                - 'App\Tests\Behat\Context\Hook\DatabaseContext'
+
+                - 'App\Tests\Behat\Context\Api\AnimalContext'
+
+                - 'App\Tests\Behat\Context\Setup\AnimalContext'
+
+            filters:
+                tags: '@animals && @api'

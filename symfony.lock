@@ -16,11 +16,29 @@
             "src/Entity/.gitignore"
         ]
     },
+    "behat/behat": {
+        "version": "v3.6.1"
+    },
+    "behat/gherkin": {
+        "version": "v4.6.2"
+    },
+    "behat/transliterator": {
+        "version": "v1.3.0"
+    },
     "brick/math": {
         "version": "0.8.15"
     },
+    "coduo/php-matcher": {
+        "version": "4.0.0"
+    },
+    "coduo/php-to-string": {
+        "version": "3.0.0"
+    },
     "composer/xdebug-handler": {
         "version": "1.4.1"
+    },
+    "container-interop/container-interop": {
+        "version": "1.2.0"
     },
     "dealerdirect/phpcodesniffer-composer-installer": {
         "version": "v0.5.0"
@@ -49,6 +67,9 @@
     "doctrine/common": {
         "version": "2.12.0"
     },
+    "doctrine/data-fixtures": {
+        "version": "1.4.2"
+    },
     "doctrine/dbal": {
         "version": "v2.10.1"
     },
@@ -65,6 +86,18 @@
             "config/packages/prod/doctrine.yaml",
             "src/Entity/.gitignore",
             "src/Repository/.gitignore"
+        ]
+    },
+    "doctrine/doctrine-fixtures-bundle": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "fc52d86631a6dfd9fdf3381d0b7e3df2069e51b3"
+        },
+        "files": [
+            "src/DataFixtures/AppFixtures.php"
         ]
     },
     "doctrine/doctrine-migrations-bundle": {
@@ -129,6 +162,18 @@
     "firebase/php-jwt": {
         "version": "v5.2.0"
     },
+    "friends-of-behat/symfony-extension": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "3d21344765fd3440a85bdd27d4cada186ec628bd"
+        }
+    },
+    "friends-of-behat/variadic-extension": {
+        "version": "v1.3.0"
+    },
     "giggsey/libphonenumber-for-php": {
         "version": "8.12.1"
     },
@@ -158,6 +203,9 @@
     },
     "ibuildings/qa-pack": {
         "version": "v1.9"
+    },
+    "jblond/php-diff": {
+        "version": "v1.16"
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
@@ -207,6 +255,9 @@
     "mtdowling/jmespath.php": {
         "version": "2.5.0"
     },
+    "n98/junit-xml": {
+        "version": "1.0.0"
+    },
     "namshi/jose": {
         "version": "7.2.3"
     },
@@ -230,6 +281,9 @@
     },
     "ocramius/proxy-manager": {
         "version": "2.7.0"
+    },
+    "openlss/lib-array2xml": {
+        "version": "1.0.0"
     },
     "overtrue/phplint": {
         "version": "1.2.1"
@@ -609,6 +663,9 @@
         "version": "v4.4.7"
     },
     "symfony/property-info": {
+        "version": "v4.4.7"
+    },
+    "symfony/proxy-manager-bridge": {
         "version": "v4.4.7"
     },
     "symfony/routing": {
