@@ -1,2 +1,8 @@
 imports:
     - { resource: "../tests/Behat/Resources/config/services.yaml" }
+
+services:
+
+    App\Security\Guard\FirebaseGuardAuthenticator:
+        class: 'App\Tests\Security\Guard\FirebaseGuardAuthenticator'
+        autowire: true
