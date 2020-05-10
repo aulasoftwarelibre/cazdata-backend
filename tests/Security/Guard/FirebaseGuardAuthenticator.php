@@ -1,8 +1,8 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\Tests\Security\Guard;
-
 
 use Lcobucci\JWT\Parser;
 use Lcobucci\JWT\Token;
@@ -14,12 +14,10 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
+use function strtr;
 
 final class FirebaseGuardAuthenticator extends AbstractGuardAuthenticator
 {
-    /**
-     * @var TokenExtractorInterface
-     */
     private TokenExtractorInterface $tokenExtractor;
 
     public function __construct(
@@ -31,7 +29,7 @@ final class FirebaseGuardAuthenticator extends AbstractGuardAuthenticator
     /**
      * @inheritDoc
      */
-    public function start(Request $request, AuthenticationException $authException = null)
+    public function start(Request $request, ?AuthenticationException $authException = null)
     {
         $data = ['message' => 'Authentication Required'];
 
