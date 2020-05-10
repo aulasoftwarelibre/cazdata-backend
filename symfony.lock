@@ -255,6 +255,9 @@
     "mtdowling/jmespath.php": {
         "version": "2.5.0"
     },
+    "n98/junit-xml": {
+        "version": "1.0.0"
+    },
     "namshi/jose": {
         "version": "7.2.3"
     },

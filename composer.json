@@ -7,7 +7,6 @@
         "ext-iconv": "*",
         "ext-json": "*",
         "api-platform/api-pack": "^1.2.1",
-        "coduo/php-matcher": "^4.0",
         "doctrine/doctrine-bundle": "^2.0",
         "doctrine/doctrine-migrations-bundle": "*",
         "doctrine/orm": "^2.4.5",
@@ -43,6 +42,7 @@
         "vich/uploader-bundle": "^1.13"
     },
     "require-dev": {
+        "coduo/php-matcher": "^4.0",
         "doctrine/coding-standard": "^7.0",
         "doctrine/doctrine-fixtures-bundle": "^3.3",
         "friends-of-behat/symfony-extension": "^2.1",
