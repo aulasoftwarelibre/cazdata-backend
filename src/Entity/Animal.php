@@ -86,6 +86,9 @@ class Animal
     /** @ApiProperty(iri="http://schema.org/contentUrl") */
     public ?string $contentUrl = null;
 
+    /** @ORM\Column(type="string", length=255, nullable=true) */
+    private ?string $source = null;
+
     public function __toString() : string
     {
         return (string) $this->getName();
@@ -178,5 +181,17 @@ class Animal
     public static function getTypes() : array
     {
         return ['minor','major'];
+    }
+
+    public function getSource() : ?string
+    {
+        return $this->source;
+    }
+
+    public function setSource(?string $source) : self
+    {
+        $this->source = $source;
+
+        return $this;
     }
 }
